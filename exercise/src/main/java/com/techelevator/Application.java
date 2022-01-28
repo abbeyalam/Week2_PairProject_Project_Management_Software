@@ -45,6 +45,9 @@ public class Application {
      * Create departments and add them to the collection of departments
      */
     private void createDepartments() {
+        departments.add(0,new Department(1, "Marketing") );
+        departments.add(1,new Department(2, "Sales") );
+        departments.add(2,new Department(3, "Engineering") );
     }
 
     /**
@@ -52,7 +55,9 @@ public class Application {
      */
     private void printDepartments() {
         System.out.println("------------- DEPARTMENTS ------------------------------");
-
+        for( Department id : departments) {
+            System.out.println(id.getName());
+        }
     }
 
     /**
