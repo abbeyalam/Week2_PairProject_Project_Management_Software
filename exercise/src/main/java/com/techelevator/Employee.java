@@ -96,6 +96,7 @@ public class Employee {
         this.email = email;
         this.department = department;
         this.hireDate = hireDate;
+        this.salary = startingSalary;
     }
 
     public Employee () {
@@ -108,9 +109,9 @@ public class Employee {
         return lastName + ", " + firstName;
     }
 
-    public double raiseSalary(double percent){
+    public void raiseSalary(double percent){
         double raisedSalary = ((percent * salary) / 100) + salary;
-        return raisedSalary; //may need to save this to the salary variable
+        salary = raisedSalary;
     }
     //done with step 2
 }

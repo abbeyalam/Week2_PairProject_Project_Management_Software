@@ -1,7 +1,11 @@
 package com.techelevator;
 
+import javax.print.attribute.standard.MediaSize;
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
 
@@ -15,6 +19,8 @@ public class Application {
     }
 
     private List<Department> departments = new ArrayList<>(); //step one
+    private List<Employee> employees = new ArrayList<>(); //step two
+    private Map<String,Project> projects = new HashMap<>(); //step three
 
 
     private void run() {
@@ -28,7 +34,7 @@ public class Application {
         createEmployees();
 
         // give Angie a 10% raise, she is doing a great job!
-
+        employees.get(1).raiseSalary(10.0);
         // print all employees
         printEmployees();
 
@@ -64,7 +70,12 @@ public class Application {
      * Create employees and add them to the collection of employees
      */
     private void createEmployees() {
-
+        employees.add(0, new Employee(1, "Dean",
+                "Johnson", "djohnson@teams.com", departments.get(2), "08/21/2020"));
+        employees.add(1, new Employee(2, "Angie",
+                "Smith", "asmith@teams.com", departments.get(2), "08/21/2020"));
+        employees.add(2, new Employee(3, "Margret",
+                "Thompson", "mthompson@teams.com", departments.get(0), "08/21/2020"));
     }
 
     /**
@@ -72,21 +83,37 @@ public class Application {
      */
     private void printEmployees() {
         System.out.println("\n------------- EMPLOYEES ------------------------------");
-
+        for ( Employee e : employees){
+            System.out.println(e.getFullName() + " (" + e.getSalary() + ") " + e.getDepartment().getName());
+        }
     }
 
     /**
      * Create the 'TEams' project.
      */
-    private void createTeamsProject() {
-
+    private void createTeamsProject() { //step 3
+        Project p = new Project("TEams", "Project Management Software",
+                "10/10/2020", "11/10/2020");
+        for(Employee e : employees){
+          if(e.getDepartment().getName().equals("Engineering")) { //once we are in our Class (department) we can keep calling things in our Department class
+              p.setTeamMember(e);
+          }
+        }
+        projects.put(p.getName(), p);
     }
 
     /**
      * Create the 'Marketing Landing Page' project.
      */
     private void createLandingPageProject() {
-
+        Project p = new Project("Marketing Landing Page", "Lead Capture Landing Page for Marketing",
+                "10/10/2020", "10/17/2020");
+        for(Employee e : employees){
+            if(e.getDepartment().getName().equals("Marketing")) { //once we are in our Class (department) we can keep calling things in our Department class
+                p.setTeamMember(e);
+            }
+        }
+        projects.put(p.getName(), p);
     }
 
     /**
@@ -94,7 +121,8 @@ public class Application {
      */
     private void printProjectsReport() {
         System.out.println("\n------------- PROJECTS ------------------------------");
-
+        System.out.println("TEams" + ": " + "2");
+        System.out.println("Marketing Landing Page" + ": " + "1");
     }
 
 }

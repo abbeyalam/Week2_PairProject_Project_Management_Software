@@ -12,7 +12,7 @@ public class Project {
         return name;
     }
     //set
-    public void setName(){
+    public void setName(String name){
         this.name = name;
     }
 
@@ -23,7 +23,7 @@ public class Project {
         return description;
     }
     //set
-    public void setDescription(){
+    public void setDescription(String description){
         this.description = description;
     }
 
@@ -34,7 +34,7 @@ public class Project {
         return startDate;
     }
     //set
-    public void setStartDate(){
+    public void setStartDate(String startDate){
         this.startDate = startDate;
     }
 
@@ -45,7 +45,7 @@ public class Project {
         return dueDate;
     }
     //set
-    public void setDueDate(){
+    public void setDueDate(String dueDate){
         this.dueDate = dueDate;
     }
 
@@ -56,8 +56,8 @@ public class Project {
         return teamMember;
     }
     //set
-    public void setTeamMember(){
-        this.teamMember = teamMember;
+    public void setTeamMember(Employee teamMember){
+        this.teamMember.add(teamMember);
     }
 
 
