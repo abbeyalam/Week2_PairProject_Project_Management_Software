@@ -95,7 +95,8 @@ public class Application {
         Project p = new Project("TEams", "Project Management Software",
                 "10/10/2020", "11/10/2020");
         for(Employee e : employees){
-          if(e.getDepartment().getName().equals("Engineering")) { //once we are in our Class (department) we can keep calling things in our Department class
+          if((e.getDepartment()).getName().equals("Engineering")) { //once we are in our Class (department) we can keep calling things in our Department class
+              //e.getDepartment --> returns a single instance(aka object) of our created class Department. NOW we have access to the methods within our Department class
               p.setTeamMember(e);
           }
         }
@@ -123,6 +124,7 @@ public class Application {
         System.out.println("\n------------- PROJECTS ------------------------------");
         System.out.println("TEams" + ": " + "2");
         System.out.println("Marketing Landing Page" + ": " + "1");
+        System.out.println((projects.get("TEams")).getName()); 
     }
 
 }
